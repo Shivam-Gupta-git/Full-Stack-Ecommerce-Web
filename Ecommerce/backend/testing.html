@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="http://localhost:3000/api/product/add" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" value="Test Product"><br>
+    <input type="text" name="description" value="Description"><br>
+    <input type="text" name="price" value="100"><br>
+    <input type="text" name="category" value="Men"><br>
+    <input type="text" name="subCategory" value="Topwear"><br>
+    <input type="text" name="sizes" value='["M"]'><br>
+    <input type="text" name="bestseller" value="true"><br>
+    <input type="file" name="image1"><br>
+    <input type="file" name="image2"><br>
+    <input type="file" name="image3"><br>
+    <input type="file" name="image4"><br><br>
+    <button type="submit">Upload</button>
+  </form>
+</body>
+</html>
