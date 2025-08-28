@@ -10,12 +10,19 @@ import { MdOutlineCancel } from "react-icons/md";
 import { ShopContext } from "../context/ShopContext";
 
 function Navbar() {
-  const{setSearchValue, handelCartCount} = useContext(ShopContext)
+  const {
+    setSearchValue,
+    handelCartCount,
+    token,
+    setToken,
+    setCartItems,
+    navigate,
+  } = useContext(ShopContext);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [userDropDown, setUserDropDown] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchIconVisible, setSearchIconVisible] = useState(false)
+  const [searchIconVisible, setSearchIconVisible] = useState(false);
   const dropDownRef = useRef();
 
   const toggleSearch = () => setIsSearchOpen((prev) => !prev);
@@ -33,14 +40,21 @@ function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const location = useLocation()
-  useEffect(()=>{
-   if(location.pathname.includes('Collection')){
-     setSearchIconVisible(true)
-   }else{
-    setSearchIconVisible(false)
-   }
-  }, [location])
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname.includes("Collection")) {
+      setSearchIconVisible(true);
+    } else {
+      setSearchIconVisible(false);
+    }
+  }, [location]);
+
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    setCartItems({});
+    navigate("/login");
+  };
 
   // NavLinks
   const navLinks = (
@@ -69,12 +83,12 @@ function Navbar() {
     </>
   );
 
-  // Cart 
+  // Cart
   const cart = (
     <Link to="/Cart" className="relative text-white">
       <IoBagOutline className="text-2xl" />
       <span className="absolute -top-2 -left-2 text-[10px] bg-black text-white w-4 h-4 rounded-full flex items-center justify-center">
-      {handelCartCount()}
+        {handelCartCount()}
       </span>
     </Link>
   );
@@ -146,17 +160,14 @@ function Navbar() {
     </>
   );
 
-
   return (
     <>
       <nav
         ref={dropDownRef}
         className="w-full bg-blue-300 shadow-md sticky top-0 z-50"
       >
-
-       {/*  Main Container */}
+        {/*  Main Container */}
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="bg-white text-blue-500 font-bold text-xl px-4 py-2 rounded-full">
@@ -171,17 +182,13 @@ function Navbar() {
 
           {/* Search User and Bars Section */}
           <div className="flex items-center gap-5 relative">
-            {
-              searchIconVisible === true ? <IoSearch
-              onClick={toggleSearch}
-              className="text-white text-2xl cursor-pointer"
-            /> : null
-            }
-        
-            <FaRegUser
-              onClick={toggleUserDropDown}
-              className="text-white text-2xl cursor-pointer"
-            />
+            {searchIconVisible === true ? (
+              <IoSearch
+                onClick={toggleSearch}
+                className="text-white text-2xl cursor-pointer"
+              />
+            ) : null}
+
             {/* Add to Cart */}
             <div className="hidden md:flex">{cart}</div>
 
@@ -197,24 +204,42 @@ function Navbar() {
             </div>
 
             {/* User Dropdown */}
-            {userDropDown && (
+            <div
+              onClick={() => {
+                if (!token) navigate("/login");
+              }}
+            >
+              <FaRegUser
+                onClick={() => {
+                  if (token) toggleUserDropDown();
+                }}
+                className="text-white text-2xl cursor-pointer "
+              />
+            </div>
+            {token && userDropDown && (
               <div className="absolute top-12 right-0 bg-white shadow-lg rounded-md text-gray-800 w-40 py-2 z-50">
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                <div className="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   My Profile
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                </div>
+                <div
+                  onClick={() => navigate("/Orders")}
+                  className="block px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                >
                   Orders
-                </a>
-                <Link to={'/Login'} className="block px-4 py-2 hover:bg-gray-100">
+                </div>
+                <div
+                  onClick={logoutUser}
+                  className="block px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                >
                   Logout
-                </Link>
+                </div>
               </div>
             )}
           </div>
         </div>
 
         {/* Sidebar for Mobile */}
-     
+
         <div
           className={`fixed top-0 left-0 h-full w-[50%] bg-white z-40 transform transition-transform duration-700  ${
             sidebarOpen ? "translate-x-0 " : "-translate-x-full"
@@ -233,23 +258,26 @@ function Navbar() {
               ) : null}
             </div>
           </div>
-          <div className="mt-3 flex flex-col gap-4" onClick={toggleSidebar}>{sidebarLinks}</div>
+          <div className="mt-3 flex flex-col gap-4" onClick={toggleSidebar}>
+            {sidebarLinks}
+          </div>
         </div>
         {/* Search Input */}
-        {searchIconVisible === true ? isSearchOpen && (
-        <div className="w-full flex justify-center px-4 pb-2 mt-2">
-          <form className="w-full md:w-[60%]">
-            <input
-              type="text"
-              onChange={(event) => setSearchValue(event.target.value)}
-              placeholder="Search for products..."
-              className="w-full px-4 py-2 rounded-full border border-gray-300 outline-none shadow-sm"
-            />
-          </form>
-        </div>
-      ) : null}
+        {searchIconVisible === true
+          ? isSearchOpen && (
+              <div className="w-full flex justify-center px-4 pb-2 mt-2">
+                <form className="w-full md:w-[60%]">
+                  <input
+                    type="text"
+                    onChange={(event) => setSearchValue(event.target.value)}
+                    placeholder="Search for products..."
+                    className="w-full px-4 py-2 rounded-full border border-gray-300 outline-none shadow-sm"
+                  />
+                </form>
+              </div>
+            )
+          : null}
       </nav>
-
     </>
   );
 }

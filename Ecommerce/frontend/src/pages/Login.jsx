@@ -1,12 +1,50 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Title from '../components/Title'
+import { ShopContext } from '../context/ShopContext'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 function Login() {
-  const[currentLoginState, setCurrentLoginState] = useState('Login')
-  const handelLoginButton = (event)=>{
+
+  const{token, setToken, backendUrl, navigate} = useContext(ShopContext)
+
+  const [currentLoginState, setCurrentLoginState] = useState('Login')
+  const [userName, setUserName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handelLoginButton = async (event)=>{
    event.preventDefault()
-   console.log('hello')
+
+   try {
+    if(currentLoginState === 'sign Up'){
+      const response = await axios.post(backendUrl + '/api/user/register', {userName, email, password})
+      if(response.data.success){
+        setToken(response.data.token)
+        localStorage.setItem('token', response.data.token)
+      }else{
+        toast.error(response.data.message)
+      }
+    }else{
+    const response = await axios.post(backendUrl + '/api/user/login', {email, password})
+    console.log(response)
+    if(response.data.success){
+      setToken(response.data.token)
+      localStorage.setItem('token', response.data.token)
+    }else{
+      toast.error(response.data.message)
+    }
+    }
+   } catch (error) {
+    console.log(error)
+    toast.error(error.message)
+   }
   }
+  useEffect(()=>{
+   if(token){
+    navigate('/')
+   }
+  },[token])
   return (
 
 <div className='w-[100%] flex flex-col items-center '>
@@ -24,18 +62,18 @@ function Login() {
         {currentLoginState === 'Login' ? '' : 
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-          <input type="text" id="name" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Shivam Gupta" required />
+          <input  type="text" onChange={(event)=> setUserName(event.target.value)} value={userName} id="name" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Shivam Gupta" required />
         </div>
         }
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" id="email" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="you@example.com" required />
+          <input type="email" onChange={(event)=> setEmail(event.target.value)} value={email} id="email" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="you@example.com" required />
         </div>
   
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-          <input type="password" id="password" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required />
+          <input type="password" onChange={(event)=> setPassword(event.target.value)} value={password} id="password" className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required />
         </div>
   
         <div className="flex items-center justify-between">

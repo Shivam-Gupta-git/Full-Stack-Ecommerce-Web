@@ -8,7 +8,7 @@ function LatestCollection() {
   const [latestProduct, setLatestProduct] = useState([])
   useEffect(()=>{
     setLatestProduct(products.slice(0, 12))
-  }, [])
+  }, [products])
 
   return(
     <>

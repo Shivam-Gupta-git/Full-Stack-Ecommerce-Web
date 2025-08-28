@@ -8,6 +8,8 @@ import connectCloudinary from './config/cloudinary.js';
 // Local Modules
 import { authRouter } from './routers/authRouter.js';
 import { productRouter } from './routers/productRouter.js';
+import { cartRouter } from './routers/cartRouter.js';
+import { orderRouter } from './routers/orderRouter.js';
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/user', authRouter);
 app.use('/api/product', productRouter);
+app.use('/api/cart', cartRouter);
+app.use('/api/order', orderRouter)
 
 app.get('/', (req, res) => {
   res.send('Fetch API successfully');

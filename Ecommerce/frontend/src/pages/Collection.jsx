@@ -56,7 +56,7 @@ function Collection() {
   
   useEffect(()=>{
     applyFilterItems()
-  },[category, subCategory, searchValue])
+  },[category, subCategory, searchValue, products])
 
   const shortProduct = ()=>{
     let shortProductItems = collectionItem.slice()
@@ -105,7 +105,7 @@ function Collection() {
   return (
     <>
 
-    <div className=' w-full flex flex-row justify-between  mt-3'>
+    <div className=' w-full flex flex-row justify-between  mt-3  min-h-100'>
       <div className='w-[15%] md:[0%] md:ml-[4.5%] h-10 '>
       
    <div>

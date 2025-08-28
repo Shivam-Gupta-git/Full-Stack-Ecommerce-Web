@@ -30,7 +30,7 @@ function Sidebar() {
   return (
     <div className='flex flex-row '>
       <div
-        className={`flex h-[100vh] bg-white shadow-sm shadow-gray-400 flex-col transform transition-all duration-700 ease-in-out fixed
+        className={`flex h-[100vh] bg-white shadow-sm shadow-gray-400 flex-col transform transition-all duration-700 ease-in-out fixed z-50
           ${sidebar ? 'w-40 md:w-60' : 'w-14 md:w-16'}`}
       >
         <div className="flex justify-end ">

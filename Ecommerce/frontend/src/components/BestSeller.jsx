@@ -10,10 +10,10 @@ function BestSeller() {
 
   useEffect(()=>{
    const bestProduct = products.filter((item) => (item.bestseller))
-   console.log(bestProduct)
+  //  console.log(bestProduct)
    setBestSeller(bestProduct.slice(0, 8))
-  }, [])
-  console.log(bestSeller)
+  }, [products])
+  // console.log(bestSeller)
   return (
     <>
     <div className='md:w-[100%] md:h-[60px]  flex flex-col items-center justify-center mt-6'>

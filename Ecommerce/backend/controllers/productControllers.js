@@ -55,30 +55,30 @@ export const addProduct = async (req, res) => {
 export const listProduct = async (req, res) => {
   try {
     const products = await Product.find({})
-    res.json({seccess: true, products})
+    res.json({ success: true, products })
   } catch (error) {
     console.log(error)
-    res.json({success: false, message: error.message})
+    res.json({ success: false, message: error.message })
   }
 }
 
 export const removeProduct = async (req, res) => {
- try {
-   await Product.findByIdAndDelete(req.body.id)
-  res.json({success: true, message: 'Product Remove'})
- } catch (error) {
-  console.log(error)
-  res.json({success: false, message: error.message})
- }
+  try {
+    await Product.findByIdAndDelete(req.body.id)
+    res.json({ success: true, message: 'Product Remove' })
+  } catch (error) {
+    console.log(error)
+    res.json({ success: false, message: error.message })
+  }
 }
 
 export const singleProduct = async (req, res) => {
-try {
-  const { productId } = req.body
-  const singleItem = await Product.findById(productId)
-  res.json({success: true, singleItem})
-} catch (error) {
-  console.log(error)
-  res.json({success: false, message: error.message})
-}
+  try {
+    const { productId } = req.body
+    const singleItem = await Product.findById(productId)
+    res.json({ success: true, singleItem })
+  } catch (error) {
+    console.log(error)
+    res.json({ success: false, message: error.message })
+  }
 }
