@@ -85,7 +85,7 @@ function Login() {
         </div>
   
         <button type="submit" className="w-full bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-950 transition duration-300">
-          {currentLoginState === 'Login' ? 'Sign In' : 'Sign Up'}
+          {currentLoginState === 'Login' ? '' : 'Sign Up'}
         </button>
       </form>
   
