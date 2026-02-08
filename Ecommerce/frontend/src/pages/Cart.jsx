@@ -8,6 +8,7 @@ function Cart() {
   const { products, cartItems, currency,  handleCartRemoveItem,  handelCartAmount, dileveryFee, } = useContext(ShopContext)
   const [productItemData, setProductItemData] = useState([])
 
+
   useEffect(() => {
     const itemData = []
     for (let items in cartItems) {
@@ -26,14 +27,14 @@ function Cart() {
 
 
   return (
-    <div className='w-full flex flex-col items-center py-10 px-4 md:px-10'>
+    <div className='w-full flex flex-col items-center py-10 px-4 md:px-10 bg-[#f5ebe0]'>
       <div className='w-full md:w-[90%]'>
         <Title text1="Cart" text2="Items" />
       </div>
 
       <div className='w-full md:w-[90%] mt-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
         {/* Cart Items */}
-        <div className='w-full max-h-[70vh] overflow-y-auto rounded-lg shadow-md border bg-white'>
+        <div className='w-full max-h-[70vh] overflow-y-auto rounded-lg shadow-md  bg-[#d6ccc2]'>
           {
             productItemData.length === 0 ? (
               <div className='p-6 text-center text-gray-500'>Your cart is empty.</div>
@@ -92,7 +93,7 @@ function Cart() {
         </div>
 
         {/* Order Summary */}
-        <div className='w-full h-fit p-6 border rounded-lg shadow-md bg-gray-50'>
+        <div className='w-full h-fit p-6  rounded-lg shadow-md bg-[#d6ccc2]'>
           <h2 className='text-xl font-semibold mb-4'>Order Summary</h2>
 
           <div className='flex justify-between mb-2'>

@@ -76,26 +76,28 @@ function Collection() {
   const filterItems = (
     <>  
     <div className='py-3 px-2 mt-5'>
-    <p className=' font-medium '>CATEGORIES</p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className=' font-medium text-[17px]'>CATEGORIES</p>
+    <hr />
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Men'} onChange={handelCategoryItem}/>Men
     </p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Women'} onChange={handelCategoryItem}/>Women
     </p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Kids'} onChange={handelCategoryItem}/>Kids
     </p>
   </div>
     <div className='py-3 px-2 mt-3'>
-    <p className=' font-medium'>TYPE</p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className=' font-medium text-[17px]'>TYPE</p>
+    <hr />
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Topwear'} onChange={handelSubCategoryItems}/>Topwear
     </p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Bottomwear'} onChange={handelSubCategoryItems}/>Bottomwear
     </p>
-    <p className='flex flex-row gap-1 mt-1 text-gray-400'>
+    <p className='flex flex-row gap-1 mt-1 text-black'>
       <input type="checkbox" value={'Winterwear'} onChange={handelSubCategoryItems}/>Winterwear
     </p>
   </div>
@@ -105,10 +107,10 @@ function Collection() {
   return (
     <>
 
-    <div className=' w-full flex flex-row justify-between  mt-3  min-h-100'>
-      <div className='w-[15%] md:[0%] md:ml-[4.5%] h-10 '>
+    <div className=' w-full flex flex-row justify-between  min-h-100  bg-[#f5ebe0]'>
+      <div className='w-[15%] md:[0%] md:ml-[4.5%] h-10'>
       
-   <div>
+   <div className=' bg-[#d5bdaf] p-2 rounded-2xl mt-3'>
     <div className='flex h-[20px] flex-row items-center gap-2 mt-2'>
    <h1 className='font-bold text-xl md:flex hidden ml-[4%]'>FILTER</h1>
    <p className='md:hidden flex cursor-pointer' onClick={handelFilterItems}>
@@ -135,10 +137,10 @@ function Collection() {
       
       </div>
 
-      <div className=' md:w-[80%] flex flex-col'>
+      <div className=' md:w-[80%] flex flex-col '>
       <div className=' flex flex-col  items-center   sm:w-full '>
       <div className='w-[90%] flex flex-row justify-between items-center'>
-        <div className='flex flex-row items-center gap-1'>
+        <div className='flex flex-row items-center gap-1 mt-2'>
       <p className='md:hidden flex cursor-pointer' onClick={handelFilterItems}>
       {
       showFilterItems ? <IoIosArrowDropleft className='sm:text-2xl text-[20px]'/> : <IoIosArrowDropright className='sm:text-xl text-[20px]'/>
@@ -147,8 +149,8 @@ function Collection() {
         <Title text1={'ALL'} text2={'COLLECTION'}></Title>
      </div>
      
-      <div className='md:h-8 h-7  flex rounded items-center md:text-sm text-[10px] border  border-gray-300'>
-        <select onChange={(event)=>setShortType(event.target.value)}>
+      <div className='md:h-8 h-7  flex rounded items-center md:text-sm text-[10px] bg-[#e3d5ca] px-10'>
+        <select onChange={(event)=>setShortType(event.target.value)} className='bg-[#e3d5ca]'>
           <option value="relavent">Sort by: Relavent</option>
           <option value="high-low">Sort by: High to Low</option>
           <option value="low-high">Sort by: Low to High</option>
@@ -157,7 +159,7 @@ function Collection() {
         </div>
         </div>
 
-      <div className='w-[100%] flex flex-row flex-wrap md:mt-5 items-center justify-center '>
+      <div className='w-[100%] flex flex-row flex-wrap md:mt-5 items-center justify-center  gap-10 mb-20'>
        {collectionItem.map((items, index)=>(
         <div key={index} className='mt-5'>
           <ProductItems items={items}></ProductItems>

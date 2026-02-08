@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
   cartData: {
     type: Object,
     default: {}
+  },
+  wishlistData: {
+    type: [String],
+    default: []
   }
 }, { minimize: false });
 

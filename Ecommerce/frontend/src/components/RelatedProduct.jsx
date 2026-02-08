@@ -26,7 +26,7 @@ function RelatedProduct({category, subCategory,}) {
         <Title text1={'Related'} text2={'Product'}></Title>
       </h2>
       <div className='w-full flex  items-center justify-center'>
-      <div className=" flex flex-row flex-wrap  items-center justify-center   md:w-[90%]">
+      <div className=" flex flex-row flex-wrap  items-center justify-center gap-10 md:w-[90%] mb-15">
         {related.map((items) => (
             <ProductItems key={items._id} items={items}></ProductItems>
         ))}

@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
-function Title({text1, text2}) {
+function Title({ text1, text2, className = "" }) {
   return (
-    <div className='flex flex-row items-center'>
-      <h1 className='md:text-3xl font-light text-gray-400'>{text1}</h1>
-      <h1 className=' md:text-3xl font-medium text-gray-900 ml-2'>{text2}</h1>
-      <div className='h-0.5 md:w-18 bg-black ml-2'></div>
+    <div className={`flex flex-wrap items-baseline gap-2 ${className}`}>
+      <span className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-gray-400">
+        {text1}
+      </span>
+      <span className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-gray-900">
+        {text2}
+      </span>
     </div>
-  )
+  );
 }
 
-export default Title
+export default Title;

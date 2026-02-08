@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { RiExchangeFundsFill } from "react-icons/ri";
 import { MdOutlineVerified } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
@@ -6,53 +6,44 @@ import { BiSupport } from "react-icons/bi";
 const policies = [
   {
     icon: RiExchangeFundsFill,
-    title: "Easy Exchange Policy",
-    desc: "Exchange any product within 7 days, no questions asked.",
+    title: "Easy Exchange",
+    desc: "Exchange any product within 7 days.",
   },
   {
     icon: MdOutlineVerified,
-    title: "7 Days Return Policy",
-    desc: "Return products easily within 7 days.",
+    title: "7 Days Return",
+    desc: "Hassle-free returns within 7 days.",
   },
   {
     icon: BiSupport,
-    title: "Best Customer Support",
-    desc: "24/7 support for all your needs.",
+    title: "24/7 Support",
+    desc: "We're here to help anytime.",
   },
 ];
 
 function Policy() {
-  const [hovered, setHovered] = useState(-1);
-  
   return (
-    <div className="w-full flex flex-row flex-wrap md:gap-5 items-center justify-evenly md:mt-12">
-      {policies.map((policy, idx) => {
-        const Icon = policy.icon;
-        return (
-          <div
-            key={idx}
-            className="relative w-40 md:w-70 h-30 md:h-50 flex flex-col items-center justify-center bg-white rounded-md hover:shadow-lg transition duration-300 group cursor-pointer"
-            onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(-1)}
-          >
+    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        {policies.map((policy, idx) => {
+          const Icon = policy.icon;
+          return (
             <div
-              className={`text-[20px] lg:text-5xl md:text-4xl mb-2 transition-transform duration-300 ${
-                hovered === idx ? "animate-bounce" : ""
-              }`}
+              key={idx}
+              className="group flex flex-col items-center text-center p-8 rounded-2xl bg-[#d6ccc2]/80 hover:bg-[#d6ccc2] border border-[#d6ccc2] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
             >
-              <Icon />
+              <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/80 group-hover:bg-gray-900 transition-colors duration-300 mb-5">
+                <Icon className="text-2xl text-gray-700 group-hover:text-white" />
+              </div>
+              <h3 className="text-base font-semibold text-gray-800">
+                {policy.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">{policy.desc}</p>
             </div>
-            <p className="text-[9px] md:text-xs lg:text-sm font-bold">
-              {policy.title}
-            </p>
-            <p className="text-[7px] md:text-xs lg:text-sm text-gray-400 text-center">
-              {policy.desc}
-            </p>
-
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 

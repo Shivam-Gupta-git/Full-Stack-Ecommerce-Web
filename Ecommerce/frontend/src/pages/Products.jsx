@@ -7,7 +7,7 @@ import RelatedProduct from "../components/RelatedProduct";
 
 function Products() {
   const { ProductId } = useParams();
-  const { products, currency, handelCartItems } = useContext(ShopContext);
+  const { products, currency, handelCartItems, addToWishlist } = useContext(ShopContext);
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState("");
   const [size, setSize] = useState('')
@@ -22,9 +22,9 @@ function Products() {
 
   return productData ? (
     <>
-    <div>
+    <div className="bg-[#f5ebe0]">
 
-    <div className=" bg-white py-10 px-4 sm:px-10 flex justify-center">
+    <div className=" py-10 px-4 sm:px-10 flex justify-center bg-[#f5ebe0]">
       <div className="max-w-6xl w-full flex flex-col lg:flex-row gap-10">
         
         {/* Left: Image Section */}
@@ -86,7 +86,7 @@ function Products() {
             <button onClick={()=> handelCartItems(productData._id, size)} className="px-6 py-2 bg-gray-800 hover:bg-gray-950 text-white font-medium cursor-pointer  transition">
               Add to Cart
             </button>
-            <button className="px-6 py-2 border border-gray-400 text-gray-700 hover:bg-gray-100  cursor-pointer transition">
+            <button onClick={() => addToWishlist(productData._id)} className="px-6 py-2 border border-gray-400 text-gray-700 hover:bg-gray-100  cursor-pointer transition">
               Wishlist
             </button>
           </div>

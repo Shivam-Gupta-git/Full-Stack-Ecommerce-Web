@@ -7,13 +7,13 @@ import Subscribe from "../components/Subscribe";
 
 function Home() {
   return (
-    <>
+    <main className="min-h-screen bg-[#f5ebe0]">
       <Hero />
       <LatestCollection />
       <BestSeller />
       <Policy />
       <Subscribe />
-    </>
+    </main>
   );
 }
 

@@ -17,6 +17,7 @@ function Navbar() {
     setToken,
     setCartItems,
     navigate,
+    handleWishlistCount
   } = useContext(ShopContext);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -98,7 +99,7 @@ function Navbar() {
     <Link to="/Wishlist" className="relative text-white">
       <FaRegHeart className="text-2xl" />
       <span className="absolute -top-2 -left-2 text-[10px] bg-black text-white w-4 h-4 rounded-full flex items-center justify-center">
-        1
+        {handleWishlistCount()}
       </span>
     </Link>
   );
