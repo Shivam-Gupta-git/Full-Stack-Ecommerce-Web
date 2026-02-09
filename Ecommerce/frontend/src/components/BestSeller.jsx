@@ -13,7 +13,7 @@ function BestSeller() {
   }, [products]);
 
   return (
-    <section className="w-full bg-[#ebe5df]/50 py-12 md:py-16">
+    <section className="w-full bg-[#f5ebe0]/50 py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
           <Title text1="BEST" text2="SELLER" className="justify-center" />

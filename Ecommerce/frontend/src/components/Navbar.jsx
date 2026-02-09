@@ -60,24 +60,24 @@ function Navbar() {
   // NavLinks
   const navLinks = (
     <>
-      <NavLink to="/" className="text-white hover:text-yellow-300 transition">
+      <NavLink to="/" className="text-[#7f5539] hover:text-[#5e503f] transition">
         Home
       </NavLink>
       <NavLink
         to="/Collection"
-        className="text-white hover:text-yellow-300 transition"
+        className="text-[#7f5539] hover:text-[#5e503f] transition"
       >
         Collection
       </NavLink>
       <NavLink
         to="/About"
-        className="text-white hover:text-yellow-300 transition"
+        className="text-[#7f5539] hover:text-[#5e503f] transition"
       >
         About
       </NavLink>
       <NavLink
         to="/Contact"
-        className="text-white hover:text-yellow-300 transition"
+        className="text-[#7f5539] hover:text-[#5e503f] transition"
       >
         Contact
       </NavLink>
@@ -165,13 +165,13 @@ function Navbar() {
     <>
       <nav
         ref={dropDownRef}
-        className="w-full bg-blue-300 shadow-md sticky top-0 z-50"
+        className="w-full bg-[#e3d5ca] shadow-md sticky top-0 z-50"
       >
         {/*  Main Container */}
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="bg-white text-blue-500 font-bold text-xl px-4 py-2 rounded-full">
+            <div className="bg-white text-[#7f5539] font-bold text-xl px-4 py-2 rounded-full">
               LOGO
             </div>
           </div>
