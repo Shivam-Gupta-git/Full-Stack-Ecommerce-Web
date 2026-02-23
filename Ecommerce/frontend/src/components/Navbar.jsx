@@ -219,7 +219,9 @@ function Navbar() {
             </div>
             {token && userDropDown && (
               <div className="absolute top-12 right-0 bg-white shadow-lg rounded-md text-gray-800 w-40 py-2 z-50">
-                <div className="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <div 
+                onClick={() => navigate("/UserProfile")}
+                className="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   My Profile
                 </div>
                 <div

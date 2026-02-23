@@ -20,7 +20,7 @@ function RelatedProduct({category, subCategory,}) {
 
 
   return (
-    <div className='w-full flex items-center justify-center'>
+    <div className='w-full flex items-center justify-center bg-[#f5ebe0]'>
     <div className=" md:w-[100%] px-4">
       <h2 className=" ml-[2%] md:ml-[13%]   mb-4">
         <Title text1={'Related'} text2={'Product'}></Title>

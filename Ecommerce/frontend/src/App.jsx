@@ -13,6 +13,7 @@ import Navbar from './components/Navbar'
 import Contacts from './pages/Contacts'
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
+import UserProfile from './pages/UserProfile'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/Product/:ProductId' element={<Products/>}/>
         <Route path='/Wishlist' element={<Wishlist/>}/>
         <Route path='/Contact' element={<Contacts/>}/>
+        <Route path='/UserProfile' element={<UserProfile/>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

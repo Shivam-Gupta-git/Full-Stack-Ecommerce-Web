@@ -26,6 +26,7 @@ const getInitialWishlist = () => {
   }
 };
 
+
 const ShopContextProvider = (props) => {
   const currency = "$";
   const dileveryFee = 10;
@@ -36,6 +37,7 @@ const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
   const [wishlistItems, setWishlistItems] = useState(getInitialWishlist);
+  const [user, setUser] = useState([])
 
 
 
@@ -74,21 +76,19 @@ const ShopContextProvider = (props) => {
   };
   const handelCartCount =  () => {
     let cartCount = 0;
-    for (let items in cartItems) {
-      for (let item in cartItems[items]) {
-        try {
-          if (cartItems[items][item] > 0) {
-            cartCount += cartItems[items][item];
-          }
-        } catch (error) {
-          console.log("error while increasing count in Cart");
+
+    Object.values(cartItems).forEach(category => {
+      Object.values(category).forEach(quantity => {
+        if (quantity > 0) {
+          cartCount += quantity;
         }
-      }
-    }
+      });
+    });
     return cartCount;
   };
 
   const handleWishlistCount = () => wishlistItems.length;
+  console.log(handleWishlistCount());
 
   const handleCartRemoveItem = async (itemId, size, quantity) => {
     let cartRemoveItems = structuredClone(cartItems);

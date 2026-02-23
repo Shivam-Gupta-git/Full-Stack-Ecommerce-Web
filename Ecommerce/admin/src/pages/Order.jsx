@@ -66,7 +66,7 @@ function Order({ token }) {
       {orderList.map((order, index) => (
         <div
           key={index}
-          className="bg-white rounded-2xl shadow-lg p-6 space-y-4 border border-gray-200"
+          className="bg-[#e3d5ca] rounded-2xl shadow-lg p-6 space-y-4 border border-gray-200"
         >
           {/* Items Section */}
           <div className="grid md:grid-cols-2 gap-4">

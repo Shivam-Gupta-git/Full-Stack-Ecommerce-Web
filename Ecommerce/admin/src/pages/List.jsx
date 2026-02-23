@@ -44,7 +44,7 @@ function List({token}) {
     {productList.map((item) => (
       <div
         key={item._id}
-        className="w-full bg-white rounded-lg shadow-sm shadow-gray-400 flex flex-row items-start gap-3 p-3 mb-4 relative"
+        className="w-full bg-[#e3d5ca] rounded-lg shadow-sm shadow-gray-400 flex flex-row items-start gap-3 p-3 mb-4 relative"
       >
         {/* Product Image */}
         <div className="w-24 h-24 shrink-0 rounded overflow-hidden border border-gray-200 shadow-sm">

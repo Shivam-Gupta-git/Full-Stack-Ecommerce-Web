@@ -64,8 +64,8 @@ function Add({ token }) {
 
     return (
         <form onSubmit={handelFormData}>
-        <div className="w-full flex justify-center md:px-4 md:py-6">
-          <div className="w-full bg-white p-5 rounded-md shadow-md shadow-gray-300 flex flex-col gap-6">
+        <div className="w-full flex justify-center md:px-4 md:py-6 ">
+          <div className="w-full  p-5 rounded-md shadow-md shadow-gray-300 flex flex-col gap-6 bg-[#e3d5ca]">
             
             {/* Image Upload */}
             <div>
