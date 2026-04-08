@@ -2,7 +2,8 @@ import User from '../model/userModel.js';
 
 export const addWishlistItem = async (req, res) => {
   try {
-    const { userId, itemId } = req.body;
+    const { itemId } = req.body;
+    const userId = req.userId
 
     const userData = await User.findById(userId);
     if (!userData) {
@@ -27,7 +28,7 @@ export const addWishlistItem = async (req, res) => {
 
 export const getWishlistItems = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const  userId  = req.userId;
 
     const userData = await User.findById(userId).select('wishlistData');
 
